@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8" target="_blank"> 
+<title>测试网页</title>
+</head>
+
+<script type="text/javascript">
+
+function method1(){
+	test1 ();
+}
+
+function method2 () {
+	test2('啊哈哈','iOS');
+}
+
+function aaa () {
+	alert("OC调用了无参数的js方法");
+}
+
+function bbb (name,num) {
+	alert(name+num);
+}
+
+</script>
+<body>
+
+	<button type="button" onClick="method1()"> JS调用OC方法(无参)</button>
+	<button type="button" onClick="method2()"> JS调用OC方法(传参)</button>
+
+</body> 
+</html>

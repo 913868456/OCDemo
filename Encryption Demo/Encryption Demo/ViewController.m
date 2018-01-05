@@ -74,23 +74,23 @@
     
     NSString *originString = self.textField.text;
     
-    NSLog(@"明文(%d): %@", (int)originString.length, originString);
+    NSLog(@"明文(%d):\n %@", (int)originString.length, originString);
     
     // Demo: encrypt with public key
     encWithPubKey = [RSA encryptString:originString publicKey:pubkey];
-    NSLog(@"Public key 加密: %@", encWithPubKey);
+    NSLog(@"Public key 加密:\n %@", encWithPubKey);
     
     // Demo: decrypt with private key
     decWithPrivKey = [RSA decryptString:encWithPubKey privateKey:privkey];
-    NSLog(@"Private key 解密: %@", decWithPrivKey);
+    NSLog(@"Private key 解密:\n %@", decWithPrivKey);
     
     // Demo: encrypt with private key
     encWithPrivKey = [RSA encryptString:originString privateKey:privkey];
-    NSLog(@"Private key 加密: %@", encWithPrivKey);
+    NSLog(@"Private key 加密:\n %@", encWithPrivKey);
     
     // Demo: decrypt with public key
     decWithPublicKey = [RSA decryptString:encWithPrivKey publicKey:pubkey];
-    NSLog(@"Public key 解密: %@", decWithPublicKey);
+    NSLog(@"Public key 解密:\n %@", decWithPublicKey);
     
     self.textLabel.text = [NSString stringWithFormat:@"RSA 加密方式\n\nPublic key 加密: %@\n\nPrivate key 解密: %@\n\nPrivate key 加密: %@\n\nPublic key 解密: %@",encWithPubKey,decWithPrivKey,encWithPrivKey,decWithPublicKey];
 }
@@ -98,26 +98,26 @@
 - (void)MD5Demo{
     
     CocoaSecurityResult *md5 = [CocoaSecurity md5:self.textField.text];
-    //MD5加密结果
-    NSLog(@"MD5加密:%@",md5.hex);
+    //MD5
+    NSLog(@"MD5:\n%@",md5.hex);
     
-    self.textLabel.text = [NSString stringWithFormat:@"MD5 加密方式\n\n%@",md5.hex];
+    self.textLabel.text = [NSString stringWithFormat:@"MD5:\n\n%@",md5.hex];
 }
 
 - (void)SHA256Demo{
     
     CocoaSecurityResult *sha256 = [CocoaSecurity sha256:self.textField.text];
-    //SHA 256加密结果
-    NSLog(@"SHA加密:%@",sha256.hex);
+    //SHA 256
+    NSLog(@"SHA:\n\n%@",sha256.hex);
 }
 
 - (void)HMACDemo{
     
-    CocoaSecurityResult *hmacMD5 = [CocoaSecurity hmacMd5:self.textField.text hmacKey:@"123"];
-    //hmacMd5结果
-    NSLog(@"HMC-MD5 加密方式:%@",hmacMD5.hex);
+    CocoaSecurityResult *hmacMD5 = [CocoaSecurity hmacMd5:self.textField.text hmacKey:@"16BytesLengthKey"];//MD5值长度为16字节，建议使用
+    //hmacMd5
+    NSLog(@"HMC-MD5:\n%@",hmacMD5.hex);
     
-    self.textLabel.text = [NSString stringWithFormat:@"HMAC-MD5 加密方式\n\n%@",hmacMD5.hex];
+    self.textLabel.text = [NSString stringWithFormat:@"HMAC-MD5：\n\n%@",hmacMD5.hex];
 }
 
 
